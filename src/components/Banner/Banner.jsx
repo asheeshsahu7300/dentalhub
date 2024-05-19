@@ -32,7 +32,7 @@ const CarouselBanner = ({ image, title, text, link }) => {
           >
             
           </Link>
-          <p style={{fontSize:"20px",fontWeight:"bold"}}> For Appoinment Call us at +91 983305077</p>
+          <p style={{fontSize:"20px",fontWeight:"bold"}}></p>
         </div>
       </div>
     </div>
@@ -48,7 +48,7 @@ const Banner = () => {
       link: "/appointment",
     },
     {
-      image: "https://scontent.fdel25-3.fna.fbcdn.net/v/t39.30808-6/428507898_122101888844216992_7637761145673292781_n.png?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=j-cmDGFbaaoQ7kNvgEnJPkW&_nc_ht=scontent.fdel25-3.fna&oh=00_AfAqbzzttDCBYnXI212ZDbE-OMF1NfyZ3UQG0n2-4mEgKQ&oe=6635205D",
+      image: banner2,
       title: " ",
       text: " ",
       link:  "",
@@ -88,7 +88,7 @@ const Banner = () => {
     {
       image: ad7,
       title: "Your Smile Matters",
-      text: "Your smile is your best accessory. Let us help you keep it beautiful and healthy for years to come.",
+      text: " ",
       link: "/appointment",
     },
   ];

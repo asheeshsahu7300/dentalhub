@@ -9,7 +9,7 @@ const SocailLogin = ({ title }) => {
 
   const history = useHistory();
   const location = useLocation();
-  const redirect_url = location.state?.from || "/";
+  const redirect_url = location.state?.from || "/admin";
 
   // Google SingUp
   const handelGoogleSingUp = async () => {

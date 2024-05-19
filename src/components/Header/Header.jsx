@@ -33,12 +33,10 @@ const Header = () => {
             </>
           ) : (
             <>
-              <span className="border-r-2 border-black px-2">
-                <Link to="/login">Login</Link>
+              <span >
+                <Link to="/admin">Admin Login</Link>
               </span>
-              <span className="px-2">
-                <Link to="/register">Register</Link>
-              </span>
+             
             </>
           )}
         </div>

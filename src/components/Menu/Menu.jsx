@@ -68,12 +68,13 @@ const Menu = () => {
                       Contact Us
                     </Link>
                   </li>
-                  <li className="nav-item bg-primary">
+                  <li className="bg-primary text-white font-bold py-2 px-4 rounded-md hover:bg-primary-dark transition">
+                   
                     <Link
                       to="/appointment"
                       
                     >
-                     
+                      Get Appointment
                     </Link>
                   </li>
                 </ul>

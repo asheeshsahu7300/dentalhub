@@ -12,7 +12,7 @@ const Login = () => {
 
   const history = useHistory();
   const location = useLocation();
-  const redirect_url = location.state?.from || "/";
+  const redirect_url = location.state?.from||"/admin";
 
   const {
     register,
@@ -34,7 +34,7 @@ const Login = () => {
 
   return (
     <>
-      <Breadcrumbs title="Login" />
+      <Breadcrumbs title="Admin Login" />
       <div className="container">
         <div
           className="flex gap-8 items-center justify-center "
@@ -89,7 +89,7 @@ const Login = () => {
               </button>
               <h1 className="py-4">
                 Don't Have an Account?
-                <Link className="text-primary px-2" to="/register">
+                <Link className="text-primary px-2" to="/adminregister">
                   Register now
                 </Link>
               </h1>

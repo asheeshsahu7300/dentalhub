@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { toast, ToastContainer } from 'react-toastify/dist/react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import useServices from "../../useHook/useServices";
 import Breadcrumbs from "../Breadcrumbs/Breadcrumbs";
 
@@ -6,77 +8,90 @@ const Appointment = () => {
   const [services] = useServices();
   const [startDate, setStartDate] = useState(new Date());
 
+  const handleSubmit = () => {
+    toast.info("Coming soon!");
+  };
+
   return (
     <>
       <Breadcrumbs title="Appointment" />
-      <div className="container py-16">
-        <h1 className="text-4xl text-center font-bold font-Roboto">
-          Drop your <span className="text-primary">Appointment</span>{" "}
-        </h1>
-        <p className="text-gray-400 py-2 text-center">
-          Have a question or just want to say hi? We'd love to hear from you.
-        </p>
-        <fieldset>
-          <label for="fname">First name:</label>
-          <input
-            className="border-opacity-100 w-full border px-4 border-gray-800 py-2"
-            type="text"
-            id="name"
-            name="name"
-          />
-          <br />
-          <br />
-          <label for="email">Email:</label>
-          <input
-            className="border-opacity-100 w-full border px-4 border-gray-800 py-2"
-            type="email"
-            id="email"
-            name="email"
-          />
-          <br />
-          <br />
-          <label for="services">Services:</label>
-          <select
-            name="cars"
-            id="cars"
-            className="border-opacity-100 w-full border px-4 border-gray-800 py-2"
-          >
-            <option selected>Select Services</option>
-            {services.length > 0 &&
-              services.map((service) => (
-                <option key={service.id} value={service?.title}>
-                  {service?.title}
-                </option>
-              ))}
-          </select>
-          <br />
-          <br />
-          <label for="date">Date:</label>
-          <input
-            className="border-opacity-100 w-full border px-4 border-gray-800 py-2"
-            type="date"
-            id="date"
-            name="date"
-          />
-
-          <br />
-          <br />
-          <label for="message">Message:</label>
-          <textarea
-            className="border-opacity-100 w-full border px-4 border-gray-800 py-2"
-            rows="4"
-            cols="50"
-          />
-          <br />
-          <button className="bg-white mt-4 border border-primary text-black py-3 px-6 rounded-md hover:bg-transparent hover:bg-primary hover:text-white transition">
-            Submit
-          </button>
-        </fieldset>
-        <p className="text-4xl text-center  font-Roboto" style={{fontSize:"22px"}} >
-          
-          If getting  an error message, please book appointment by  calling us at   <i className="fas fa-phone-square-alt text-3xl text-secondary" style={{color:"rgba(103, 108, 184, var(--tw-text-opacity))"}}></i> +91 9833505077
-        </p>
+      <div className="container py-16 flex justify-center">
+        <div className="flex flex-col w-2/3 items-center shadow-2xl mb-8 border-l-2 border-opacity-100 rounded-lg border-primary px-8 py-8 bg-white transform transition duration-200 hover:scale-105">
+          <h1 className="text-4xl text-center font-bold font-Roboto mb-4">
+            Drop your <span className="text-primary">Appointment</span>{" "}
+          </h1>
+          <p className="text-gray-400 py-2 text-center mb-4">
+            Have a question or just want to say hi? We'd love to hear from you.
+          </p>
+          <fieldset className="w-1/2">
+            <label htmlFor="name" className="block mb-2 font-bold text-lg font-Poppins font-bold py-2 hover:text-primary">
+              Name:
+            </label>
+            <input
+              className="border-opacity-100 w-full border px-4 border-gray-800 py-2 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary mb-4"
+              type="text"
+              id="name"
+              name="name"
+            />
+            <label htmlFor="email" className="block mb-2 font-bold text-lg font-Poppins font-bold py-2 hover:text-primary">
+              Email:
+            </label>
+            <input
+              className="border-opacity-100 w-full border px-4 border-gray-800 py-2 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary mb-4"
+              type="email"
+              id="email"
+              name="email"
+            />
+            <label htmlFor="services" className="block mb-2 font-bold text-lg font-Poppins font-bold py-2 hover:text-primary">
+              Services:
+            </label>
+            <select
+              name="services"
+              id="services"
+              className="border-opacity-100 w-full border px-4 border-gray-800 py-2 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary mb-4"
+            >
+              <option selected>Select Services</option>
+              {services.length > 0 &&
+                services.map((service) => (
+                  <option key={service.id} value={service?.title}>
+                    {service?.title}
+                  </option>
+                ))}
+            </select>
+            <label htmlFor="date" className="block mb-2 font-bold text-lg font-Poppins font-bold py-2 hover:text-primary">
+              Date:
+            </label>
+            <input
+              className="border-opacity-100 w-full border px-4 border-gray-800 py-2 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary mb-4"
+              type="date"
+              id="date"
+              name="date"
+            />
+            <label htmlFor="message" className="block mb-2 font-bold text-lg font-Poppins font-bold py-2 hover:text-primary">
+              Message:
+            </label>
+            <textarea
+              className="border-opacity-100 w-full border px-4 border-gray-800 py-2 rounded-lg focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary mb-4"
+              rows="4"
+              cols="50"
+              id="message"
+              name="message"
+            />
+            <button
+              onClick={handleSubmit}
+              className="bg-white mt-4 border border-primary text-black py-3 px-6 rounded-md hover:bg-primary hover:text-white transition"
+            >
+              Submit
+            </button>
+          </fieldset>
+          <p className="text-center font-Roboto mt-8" style={{ fontSize: "22px" }}>
+            If getting an error message, please book appointment by calling us at
+            <i className="fas fa-phone-square-alt text-3xl text-secondary mx-2" style={{ color: "rgba(103, 108, 184, var(--tw-text-opacity))" }}></i>
+            +91 9833505077
+          </p>
+        </div>
       </div>
+      <ToastContainer />
     </>
   );
 };

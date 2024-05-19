@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import About from "./components/About/About";
+import Admin from "./components/Admin/admin";
 import Appointment from "./components/Appointment/Appointment";
 import Banner from "./components/Banner/Banner";
 import ClinicalFacts from "./components/ClinicalFacts/ClinicalFacts";
@@ -17,14 +18,19 @@ import QualityService from "./components/QualityService/QualityService";
 import Register from "./components/Register/Register";
 import Services from "./components/Services/Services";
 import ServicesDetails from "./components/Services/ServicesDetails";
+import Messages from "./components/Admin/getcontacts";
+import Errors from "./components/NotFound/error";
+
 
 function App() {
   return (
     <div>
+     
       <Router>
         <AuthProvider>
           <Header />
           <Menu />
+          
           <Switch>
             <Route exact path="/">
               <Banner />
@@ -33,15 +39,23 @@ function App() {
               <Services home />
               <ClinicalFacts />
             </Route>
-            <PrivateRoute path="/service/:serviceId">
+            <Route path="/service/:serviceId">
               <ServicesDetails />
+              
+            </Route>
+            <PrivateRoute path="/messages"><Messages/>
+              
             </PrivateRoute>
-            <Route path="/login">
+            <PrivateRoute path="/admin"><Admin/></PrivateRoute>
+            <Route path="/adminlogin">
               <Login />
             </Route>
-            <Route path="/register">
-              <Register />
+           
+            <Route path="/adminregister">
+              <Errors/>
             </Route>
+            
+           <Route path='/register/123-ash/registerasadmin'><Register/></Route>
             <Route path="/forget-password">
               <ForgetPassword />
             </Route>
@@ -54,9 +68,9 @@ function App() {
             <Route path="/contact">
               <Contact />
             </Route>
-            <PrivateRoute path="/appointment">
+            <Route path="/appointment">
               <Appointment />
-            </PrivateRoute>
+            </Route>
             <Route path="*">
               <NotFound />
             </Route>
