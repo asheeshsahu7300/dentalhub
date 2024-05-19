@@ -23,7 +23,7 @@ const Contact = () => {
     setIsSubmitting(true); // Set submission status to true
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/contact/contact', {
+      const response = await fetch('https://dentalhubbackend.onrender.com/contact/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
