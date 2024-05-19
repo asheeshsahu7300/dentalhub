@@ -14,7 +14,7 @@ const Appointments = () => {
 
   const fetchAppointments = async () => {
     try {
-      const response = await fetch("http://localhost:5000/contact/getcontacts");
+      const response = await fetch("https://dentalhubbackend.onrender.com/contact/getcontacts");
       if (!response.ok) {
         throw new Error('Failed to fetch appointments');
       }
@@ -28,7 +28,7 @@ const Appointments = () => {
 
   const deleteAppointment = async (email) => {
     try {
-      const response = await fetch(`http://localhost:5000/contact/delete/${encodeURIComponent(email)}`, {
+      const response = await fetch(`https://dentalhubbackend.onrender.com/contact/delete/${encodeURIComponent(email)}`, {
         method: 'DELETE',
       });
       if (!response.ok) {
