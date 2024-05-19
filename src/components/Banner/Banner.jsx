@@ -1,38 +1,42 @@
-
 import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import banner1 from "../../images/banner.png";
-import banner2 from "../../images/banner2.jpg"
-import ad3 from "../../images/ad3.jpeg"
-import ad4 from "../../images/ad4.jpeg"
-import ad5 from "../../images/ad5.jpeg"
-import ad6 from "../../images/ad6.jpeg"
-import ad7 from "../../images/ad7.jpeg"
+import banner2 from "../../images/banner2.jpg";
+import ad3 from "../../images/ad3.jpeg";
+import ad4 from "../../images/ad4.jpeg";
+import ad5 from "../../images/ad5.jpeg";
+import ad6 from "../../images/ad6.jpeg";
+import ad7 from "../../images/ad7.jpeg";
 
 const CarouselBanner = ({ image, title, text, link }) => {
   return (
-    <div className="bg-cover bg-no-repeat bg-center py-36 relative"style={{
-      backgroundImage: `url(${image})`,backgroundRepeat:'no-repeat',backgroundSize:'cover'
-    }} >
-      
-      <div className="container">
-        <h1 className="text-6xl capitalize text-gray-800 font-medium mb-4">
-          {title}
-        </h1>
-        <p className="w-50 mb-8" style={{ maxWidth: "50ch" }}>
-          {text}
-        </p>
-        <div className="mt-12">
-          <Link
-            to={link}
-            
-          >
-            
-          </Link>
-          <p style={{fontSize:"20px",fontWeight:"bold"}}></p>
+    <div
+      className="bg-cover bg-no-repeat bg-center relative h-screen flex items-center justify-center"
+      style={{
+        backgroundImage: `url(${image})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}
+    >
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 h-full flex flex-col justify-center items-start">
+        <div className="bg-black bg-opacity-50 p-4 rounded">
+          <h1 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl capitalize text-white font-medium mb-4">
+            {title}
+          </h1>
+          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white mb-8">
+            {text}
+          </p>
+          {link && (
+            <Link
+              to={link}
+              className="bg-primary text-white px-3 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 rounded hover:bg-secondary transition"
+            >
+              Get Appointment
+            </Link>
+          )}
         </div>
       </div>
     </div>
@@ -51,16 +55,14 @@ const Banner = () => {
       image: banner2,
       title: " ",
       text: " ",
-      link:  "",
+      link: "",
     },
     {
       image: banner2,
       title: " ",
       text: " ",
-      link:  "",
+      link: "",
     },
-    
-    
     {
       image: ad3,
       title: "Care That Makes You Smile",
@@ -86,9 +88,9 @@ const Banner = () => {
       link: "/appointment",
     },
     {
-      image: ad7,
+      image: ad5,
       title: "Your Smile Matters",
-      text: " ",
+      text: " Your smile is your best accessory. Let us help you keep it beautiful and healthy for years to come.",
       link: "/appointment",
     },
   ];
@@ -104,7 +106,7 @@ const Banner = () => {
   };
 
   return (
-    <Slider {...settings}>
+    <Slider {...settings} className="h-screen">
       {banners.map((banner, index) => (
         <CarouselBanner key={index} {...banner} />
       ))}

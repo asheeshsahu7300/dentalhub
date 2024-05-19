@@ -55,7 +55,7 @@ const Appointments = () => {
         <fieldset>
           {/* Input fields */}
         </fieldset>
-        <div className="grid grid-cols-4 gap-4 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
           {appointments.map((appointment, index) => (
             <div key={index} className="shadow-2xl mb-8 border-l-2 border-opacity-100 rounded-lg border-primary px-8 py-8 bg-white transform transition duration-200 hover:scale-105">
               <div className="p-4">
