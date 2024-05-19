@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 const useServices = () => {
     const [services, setServices] = useState([]);
-    const baseUrl = "http://localhost:3000";
+    const baseUrl = "https://dentalhub-in.vercel.app";
     // const baseUrl = "https://aysha-dental-care.web.app";
     useEffect(() => {
         fetch(`${baseUrl}/fakeData/services.json`)
