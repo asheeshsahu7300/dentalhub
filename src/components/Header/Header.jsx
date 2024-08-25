@@ -4,40 +4,41 @@ import { useAuth } from "./../Context/AuthContext";
 
 const Header = () => {
   const { currentUser, logout } = useAuth();
+
   return (
     <div className="bg-gray-100">
-      <div className="container flex items-center justify-between py-2">
-        <div className="hidden md:flex">
-          <span className="border-r-2 border-black px-2">
-            <i className="far fa-envelope w-5 text-primary"></i>
-            coming soon
+      <div className="container mx-auto flex flex-col sm:flex-row items-center justify-between py-1 px-2">
+        {/* Contact Info */}
+        <div className="flex flex-wrap items-center text-primary text-xs space-x-2">
+          <span className="flex items-center ">
+            <i className="far fa-envelope text-primary text-sm mr-1"></i> coming soon
           </span>
-          <span className="px-2">
-            <i className="fas fa-phone text-primary"></i> +91 9833505077
+          <span className="flex items-center">
+          <i className="fas fa-phone text-primary text-sm mr-1"></i> +91 9833505077
           </span>
         </div>
-        <div className="flex items-center justify-between text-primary ">
+
+        {/* Authentication and Actions */}
+        <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 mt-1 sm:mt-0 text-xs">
           {currentUser?.email ? (
             <>
-              <span className="font-bold border-r-2 border-black px-2">
-                Welcome, {currentUser.displayName || currentUser.email}{" "}
+              <span className="font-bold border-b sm:border-b-0 sm:border-r-2 border-black pb-1 sm:pb-0 pr-2">
+                Welcome, {currentUser.displayName || currentUser.email}
               </span>
-              <span>
-                <button
-                  onClick={logout}
-                  className="px-4 font-bold text-secondary"
-                >
-                  Logout
-                </button>
-              </span>
+              <button
+                onClick={logout}
+                className="px-2 py-1 font-bold text-secondary hover:text-gray-600"
+              >
+                Logout
+              </button>
             </>
           ) : (
-            <>
-              <span >
-                <Link to="/admin">Admin Login</Link>
-              </span>
-             
-            </>
+            <Link
+              to="/admin"
+              className="px-2 py-1 font-bold text-secondary hover:text-gray-600"
+            >
+              Admin Login
+            </Link>
           )}
         </div>
       </div>

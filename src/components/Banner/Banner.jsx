@@ -14,35 +14,39 @@ import ad7 from "../../images/ad7.jpeg";
 const CarouselBanner = ({ image, title, text, link }) => {
   return (
     <div
-      className="bg-cover bg-no-repeat bg-center relative h-screen flex items-center justify-center"
+      className="relative w-full h-64 sm:h-32 md:h-screen flex items-center justify-center bg-cover bg-no-repeat bg-center overflow-hidden"
       style={{
         backgroundImage: `url(${image})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover', // Adjust as necessary
       }}
     >
-      <div className="container mx-auto px-4 md:px-8 lg:px-16 h-full flex flex-col justify-center items-start">
-        <div className="bg-black bg-opacity-50 p-4 rounded">
-          <h1 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl capitalize text-white font-medium mb-4">
-            {title}
-          </h1>
-          <p className="text-xs sm:text-sm md:text-base lg:text-lg text-white mb-8">
-            {text}
-          </p>
-          {link && (
-            <Link
-              to={link}
-              className="bg-primary text-white px-3 py-2 sm:px-4 sm:py-2 md:px-6 md:py-3 rounded hover:bg-secondary transition"
-            >
-              Get Appointment
-            </Link>
+      <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="container px-4 sm:px-6 md:px-8 lg:px-16 text-center flex flex-col items-center">
+          {/* Conditionally render this div based on title */}
+          {title && text && (
+            <div className="bg-black bg-opacity-60 p-4 rounded w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl">
+              <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl capitalize text-white font-medium mb-4">
+                {title}
+              </h1>
+              <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white mb-8">
+                {text}
+              </p>
+              {link && (
+                <Link
+                  to={link}
+                  className="bg-primary text-white px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-secondary transition"
+                >
+                  Get Appointment
+                </Link>
+              )}
+            </div>
           )}
         </div>
       </div>
     </div>
   );
 };
-
 const Banner = () => {
   const banners = [
     {
@@ -53,13 +57,13 @@ const Banner = () => {
     },
     {
       image: banner2,
-      title: " ",
-      text: " ",
+      title: "",
+      text: "",
       link: "",
     },
     {
       image: banner2,
-      title: " ",
+      title: "",
       text: " ",
       link: "",
     },
@@ -90,7 +94,7 @@ const Banner = () => {
     {
       image: ad5,
       title: "Your Smile Matters",
-      text: " Your smile is your best accessory. Let us help you keep it beautiful and healthy for years to come.",
+      text: "Your smile is your best accessory. Let us help you keep it beautiful and healthy for years to come.",
       link: "/appointment",
     },
   ];
@@ -103,10 +107,11 @@ const Banner = () => {
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
+    arrows: false, // Hide arrows if not needed
   };
 
   return (
-    <Slider {...settings} className="h-screen">
+    <Slider {...settings} className="w-full h-full overflow-hidden">
       {banners.map((banner, index) => (
         <CarouselBanner key={index} {...banner} />
       ))}
