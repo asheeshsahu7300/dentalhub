@@ -3,13 +3,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
-import banner1 from "../../images/banner.png";
-import banner2 from "../../images/banner2.jpg";
-import ad3 from "../../images/ad3.jpeg";
-import ad4 from "../../images/ad4.jpeg";
-import ad5 from "../../images/ad5.jpeg";
-import ad6 from "../../images/ad6.jpeg";
-import ad7 from "../../images/ad7.jpeg";
+import banner1 from "../../assets/images/banner.png";
+import banner2 from "../../assets/images/banner2.jpg";
+import ad3 from "../../assets/images/ad3.jpeg";
+import ad4 from "../../assets/images/ad4.jpeg";
+import ad5 from "../../assets/images/ad5.jpeg";
+import ad6 from "../../assets/images/ad6.jpeg";
+import ad7 from "../../assets/images/ad7.jpeg";
 
 const CarouselBanner = ({ image, title, text, link }) => {
   return (
