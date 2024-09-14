@@ -1,57 +1,56 @@
 {
-    "name": "dental-hub",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "@craco/craco": "6.3.0",
-        "@testing-library/jest-dom": "^5.11.4",
-        "@testing-library/react": "^11.1.0",
-        "@testing-library/user-event": "^12.1.10",
-        "@vercel/analytics": "1.0.0",
-        "deploy": "^1.0.3",
-        "firebase": "^9.23.0",
-        "init": "^0.1.2",
-        "login": "^0.8.0",
-        "postcss-safe-parser": "^7.0.0",
-        "react": "17.0.2",
-        "react-datepicker": "^4.2.1",
-        "react-dom": "17.0.2",
-        "react-hook-form": "^7.17.4",
-        "react-router-dom": "^5.3.0",
-        "react-scripts": "4.0.3",
-        "react-slick": "^0.30.2",
-        "react-toastify": "^9.1.3",
-        "slick-carousel": "^1.8.1",
-        "tailwindcss-cli": "^0.1.2",
-        "web-vitals": "^1.0.1"
-    },
-    "scripts": {
-        "start": "craco --openssl-legacy-provider start",
-        "build": "craco --openssl-legacy-provider build",
-        "test": "craco test",
-        "eject": "react-scripts eject"
-    },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    },
-    "devDependencies": {
-        "autoprefixer": "9",
-        "postcss": "^8.4.31",
-        "tailwindcss": "npm:@tailwindcss/postcss7-compat"
-    }
+  "name": "dental-hub",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@craco/craco": "6.3.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@vercel/analytics": "1.0.0",
+    "ajv": "^8.17.1",
+    "deploy": "^1.0.3",
+    "firebase": "^9.23.0",
+    "init": "^0.1.2",
+    "login": "^0.8.0",
+    "postcss-safe-parser": "^7.0.0",
+    "react": "17.0.2",
+    "react-datepicker": "^4.2.1",
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.17.4",
+    "react-router-dom": "^5.3.4",
+    "react-scripts": "^5.0.1",
+    "react-slick": "^0.30.2",
+    "react-toastify": "^9.1.3",
+    "slick-carousel": "^1.8.1",
+    "tailwindcss-cli": "^0.1.2",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
+    "test": "craco test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.6"
+  }
 }

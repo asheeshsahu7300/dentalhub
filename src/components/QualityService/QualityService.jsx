@@ -28,84 +28,108 @@ const QualityService = () => {
   };
 
   return (
-    <div className="container py-8 md:-mt-12 sm:-mt-24 md:py-16 lg:flex lg:justify-between">
+    <div className="container mx-auto px-6 py-6 sm:px-6 lg:px-8 md:-mt-12 sm:-mt-24 md:py-16 lg:flex lg:justify-between lg:overflow-hidden">
       {/* Slider */}
-      <div className="w-full lg:w-2/3 mb-8 lg:mb-0">
+      <div className="w-full lg:w-2/3 mb-8 lg:mb-0 relative sm:-mx-4">
         <Slider {...settings}>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
-            <img className="w-full h-full object-cover" src={clinic1} alt="Clinic 1" />
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
+            <img
+              className="w-full h-full object-cover"
+              src={clinic1}
+              alt="Clinic 1"
+            />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
-            <img className="w-full h-full object-cover" src={clinic2} alt="Clinic 2" />
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
+            <img
+              className="w-full h-full object-cover"
+              src={clinic2}
+              alt="Clinic 2"
+            />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
-            <img className="w-full h-full object-cover" src={clinic3} alt="Clinic 3" />
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
+            <img
+              className="w-full h-full object-cover"
+              src={clinic3}
+              alt="Clinic 3"
+            />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
-            <img className="w-full h-full object-cover" src={clinic4} alt="Clinic 4" />
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
+            <img
+              className="w-full h-full object-cover"
+              src={clinic4}
+              alt="Clinic 4"
+            />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
-            <img className="w-full h-full object-cover" src={clinic5} alt="Clinic 5" />
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
+            <img
+              className="w-full h-full object-cover"
+              src={clinic5}
+              alt="Clinic 5"
+            />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
             <img className="w-full h-full object-cover" src={ad1} alt="Ad 1" />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
             <img className="w-full h-full object-cover" src={ad2} alt="Ad 2" />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
             <img className="w-full h-full object-cover" src={ad3} alt="Ad 3" />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
             <img className="w-full h-full object-cover" src={ad4} alt="Ad 4" />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
             <img className="w-full h-full object-cover" src={ad5} alt="Ad 5" />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
             <img className="w-full h-full object-cover" src={ad6} alt="Ad 6" />
           </div>
-          <div className="relative h-64 md:h-80 lg:h-[450px]">
+          <div className="relative w-full h-[300px] sm:h-[500px] md:h-[700px]">
             <img className="w-full h-full object-cover" src={ad7} alt="Ad 7" />
           </div>
         </Slider>
       </div>
 
       {/* Content */}
-      <div className="lg:w-1/3 lg:ml-8">
-        <h1 className="text-2xl md:text-3xl font-Poppins font-semibold text-secondary mb-4">
+      <div className="lg:w-1/3 lg:ml-8 relative overflow-visible">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-Poppins font-semibold text-secondary mb-4">
           Quality Service in{" "}
           <span className="text-primary">Dental Practice</span>
         </h1>
-        <p className="text-sm md:text-base py-4">
+        <p className="text-xs sm:text-sm md:text-base py-4">
           To have your lawn look its best, trust Landscaping & Gardening, Inc.
           to get the job done right. We take a great deal of pride in the
-          quality of our work. We understand what complete customer
-          satisfaction means.
+          quality of our work. We understand what complete customer satisfaction
+          means.
         </p>
         <div className="flex flex-col lg:flex-row justify-between items-center">
-          <ul className="text-sm md:text-base">
+          <ul className="text-xs sm:text-sm md:text-base">
             <li className="flex items-center py-2">
-              <i className="far fa-hand-point-right text-2xl md:text-3xl text-green-500"></i>
-              <h1 className="text-sm md:text-lg px-2 uppercase font-bold text-black hover:opacity-75">
+              <i className="far fa-hand-point-right text-lg sm:text-xl md:text-2xl text-green-500"></i>
+              <h1 className="text-xs sm:text-sm md:text-lg px-2 uppercase font-bold text-black hover:opacity-75">
                 Trained Staff
               </h1>
             </li>
             <li className="flex items-center py-2">
-              <i className="far fa-hand-point-right text-2xl md:text-3xl text-green-500"></i>
-              <h1 className="text-sm md:text-lg px-2 uppercase font-bold text-black hover:opacity-75">
+              <i className="far fa-hand-point-right text-lg sm:text-xl md:text-2xl text-green-500"></i>
+              <h1 className="text-xs sm:text-sm md:text-lg px-2 uppercase font-bold text-black hover:opacity-75">
                 We provide quality Treatment
               </h1>
             </li>
             <li className="flex items-center py-2">
-              <i className="far fa-hand-point-right text-2xl md:text-3xl text-green-500"></i>
-              <h1 className="text-sm md:text-lg px-2 uppercase font-bold text-black hover:opacity-75">
+              <i className="far fa-hand-point-right text-lg sm:text-xl md:text-2xl text-green-500"></i>
+              <h1 className="text-xs sm:text-sm md:text-lg px-2 uppercase font-bold text-black hover:opacity-75">
                 Best Price
               </h1>
             </li>
           </ul>
           <div className="mt-8 lg:mt-0 w-full flex justify-center">
-            <img className=" max-w-xs md:max-w-md lg:max-w-lg" src={teeth1} alt="Teeth" />
+            <img
+              className="max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
+              src={teeth1}
+              alt="Teeth"
+            />
           </div>
         </div>
       </div>

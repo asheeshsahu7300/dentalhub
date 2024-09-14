@@ -1,16 +1,11 @@
-// admin.js
+import express from "express";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import Admin from "./models/Admin.js";
 
-// Import necessary modules
-import express from 'express';
 const router = express.Router();
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
-
-// Import Admin model
-import Admin from'./models/Admin.js';
-
 // Route to handle admin registration
-router.post('/signup', async (req, res) => {
+router.post("/signup", async (req, res) => {
   try {
     // Extract data from request body
     const { username, email, password } = req.body;
@@ -20,14 +15,14 @@ router.post('/signup', async (req, res) => {
 
     // If admin exists, send error response
     if (admin) {
-      return res.status(400).json({ message: 'Admin already exists' });
+      return res.status(400).json({ message: "Admin already exists" });
     }
 
     // Create a new admin instance
     admin = new Admin({
       username,
       email,
-      password
+      password,
     });
 
     // Hash password
@@ -38,15 +33,15 @@ router.post('/signup', async (req, res) => {
     await admin.save();
 
     // Send success response
-    res.status(201).json({ message: 'Admin registered successfully' });
+    res.status(201).json({ message: "Admin registered successfully" });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
 
 // Route to handle admin login
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     // Extract data from request body
     const { email, password } = req.body;
@@ -56,7 +51,7 @@ router.post('/login', async (req, res) => {
 
     // If admin doesn't exist, send error response
     if (!admin) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
     // Compare passwords
@@ -64,26 +59,36 @@ router.post('/login', async (req, res) => {
 
     // If passwords don't match, send error response
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ message: "Invalid credentials" });
     }
 
     // Create and return JWT token
     const payload = {
       admin: {
-        id: admin._id
-      }
+        id: admin._id,
+        email: admin.email,
+        name: admin.name, // If you want to include more details
+      },
     };
 
-    jwt.sign(payload, 'jwtsecret', { expiresIn: '1h' }, (err, token) => {
-        console.log("id:",admin._id);
+    // Sign the token with a secret key
+    jwt.sign(payload, "jwtsecret", { expiresIn: "1h" }, (err, token) => {
       if (err) throw err;
-      res.json({ token });
-      localStorage.setItem('token', token);
+
+      // Send token back to client
+      res.json({
+        token,
+        user: {
+          // Optionally, return user data
+          id: admin._id,
+          email: admin.email,
+          name: admin.name,
+        },
+      });
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).send("Server Error");
   }
 });
-
 export default router;

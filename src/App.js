@@ -1,36 +1,34 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import About from "./components/About/About";
-import Admin from "./components/Admin/admin";
-import Appointment from "./components/Appointment/Appointment";
-import Banner from "./components/Banner/Banner";
+import About from "./screens/About/About";
+import Admin from "./screens/Admin/admin";
+import Appointment from "./screens/Appointment/Appointment";
+import Banner from "./screens/Banner/Banner";
 import ClinicalFacts from "./components/ClinicalFacts/ClinicalFacts";
-import Contact from "./components/Contact/Contact";
+import Contact from "./screens/Contact/Contact";
 import AuthProvider from "./components/Context/AuthContext";
 import Feature from "./components/Feature/Feature";
-import Footer from "./components/Footer/Footer";
+import Footer from "./screens/Footer/Footer";
 import ForgetPassword from "./components/ForgetPassword/ForgetPassword";
 import Header from "./components/Header/Header";
-import Login from "./components/Login/Login";
+import Login from "./screens/Login/Login";
 import Menu from "./components/Menu/Menu";
 import NotFound from "./components/NotFound/NotFound";
 import PrivateRoute from "./components/PrivetRoute/PrivetRoute";
 import QualityService from "./components/QualityService/QualityService";
-import Register from "./components/Register/Register";
-import Services from "./components/Services/Services";
-import ServicesDetails from "./components/Services/ServicesDetails";
-import Messages from "./components/Admin/getcontacts";
+import Register from "./screens/About/Register/Register";
+import Services from "./screens/Services/Services";
+import ServicesDetails from "./screens/Services/ServicesDetails";
+import Messages from "./screens/Admin/getcontacts";
 import Errors from "./components/NotFound/error";
-
 
 function App() {
   return (
     <div>
-     
       <Router>
         <AuthProvider>
           <Header />
           <Menu />
-          
+
           <Switch>
             <Route exact path="/">
               <Banner />
@@ -41,21 +39,24 @@ function App() {
             </Route>
             <Route path="/service/:serviceId">
               <ServicesDetails />
-              
             </Route>
-            <PrivateRoute path="/messages"><Messages/>
-              
+            <PrivateRoute path="/messages">
+              <Messages />
             </PrivateRoute>
-            <PrivateRoute path="/admin"><Admin/></PrivateRoute>
+            <PrivateRoute path="/admin">
+              <Admin />
+            </PrivateRoute>
             <Route path="/adminlogin">
               <Login />
             </Route>
-           
+
             <Route path="/adminregister">
-              <Errors/>
+              <Errors />
             </Route>
-            
-           <Route path='/register/123-ash/registerasadmin'><Register/></Route>
+
+            <Route path="/register/123-ash/registerasadmin">
+              <Register />
+            </Route>
             <Route path="/forget-password">
               <ForgetPassword />
             </Route>

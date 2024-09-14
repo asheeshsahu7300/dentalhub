@@ -1,69 +1,113 @@
-import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { auth } from "./../../Firebase/firebase.config";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 const AuthContext = createContext();
 
-// Make useAuth
+// Custom hook to use AuthContext
 export const useAuth = () => useContext(AuthContext);
 
-// Provider
-const googleProvider = new GoogleAuthProvider();
-const githubProvider = new GithubAuthProvider();
-
+// Provider component
 const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useHistory(); // Replacing useHistory with useNavigate for React Router v6
 
-  // sign up using email password
-  const signUp = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
+  // User login using email and password
+  const login = async (email, password) => {
+    try {
+      const response = await fetch(
+        "https://dentalhubbackend.onrender.com/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setCurrentUser(result.user); // Save user info
+        localStorage.setItem("token", result.token); // Save token in local storage
+        return result;
+      } else {
+        throw new Error(result.message || "Login failed");
+      }
+    } catch (error) {
+      console.error("Login Error:", error);
+      throw error;
+    }
   };
-  
 
-  // User Logout
+  // User registration (sign up) using email and password
+  const register = async (email, password) => {
+    try {
+      const response = await fetch(
+        "https://dentalhubbackend.onrender.com/register",
+        {
+          // Corrected register endpoint
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      const result = await response.json();
+      if (response.ok) {
+        setCurrentUser(result.user); // Save user info
+        localStorage.setItem("token", result.token); // Save token in local storage
+        return result;
+      } else {
+        throw new Error(result.message || "Registration failed");
+      }
+    } catch (error) {
+      console.error("Registration Error:", error);
+      throw error;
+    }
+  };
+
+  // User logout
   const logout = () => {
-    return auth.signOut();
+    localStorage.removeItem("token"); // Remove token from local storage
+    setCurrentUser(null); // Clear user state
+    navigate.push("/"); // Redirect to login page
   };
 
-  // User login using email password
-  const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
-  };
-
-  // google SignUp
-  const googleSignUp = () => {
-    return auth.signInWithPopup(googleProvider);
-  };
-
-  // github SignUp
-  const githubSignUp = () => {
-    return auth.signInWithPopup(githubProvider);
-  };
-
-  // forget Password
-  const forgetPassword = (email) => {
-    return auth.sendPasswordResetEmail(email);
-  };
-
-  // Get Current Login user
+  // Check if the user is logged in on initial load
   useEffect(() => {
-    const unSubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Verify token with backend or check user session
+      fetch("https://dentalhubbackend.onrender.com/verifyToken", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.user) {
+            setCurrentUser(data.user);
+          }
+        })
+        .catch((err) => console.error("Token Verification Error:", err))
+        .finally(() => setLoading(false));
+    } else {
       setLoading(false);
-    });
-    return unSubscribe;
+    }
   }, []);
 
   // Context values
   const value = {
-    signUp,
     currentUser,
-    logout,
     login,
-    googleSignUp,
-    githubSignUp,
-    forgetPassword,
+    register, // Added register method
+    logout,
   };
+
   return (
     <AuthContext.Provider value={value}>
       {!loading && children}
