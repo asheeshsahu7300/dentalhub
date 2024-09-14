@@ -2,19 +2,19 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import clinic1 from "../../images/clinic1.jpeg";
-import clinic2 from "../../images/clinic2.jpeg";
-import clinic3 from "../../images/clinic3.jpeg";
-import clinic4 from "../../images/clinic4.jpeg";
-import clinic5 from "../../images/clinic5.jpeg";
-import teeth1 from "../../images/teeth1.jpg";
-import ad1 from "../../images/ad1.jpeg";
-import ad2 from "../../images/ad2.jpeg";
-import ad3 from "../../images/ad3.jpeg";
-import ad4 from "../../images/ad4.jpeg";
-import ad5 from "../../images/ad5.jpeg";
-import ad6 from "../../images/ad6.jpeg";
-import ad7 from "../../images/ad7.jpeg";
+import clinic1 from "../../assets/images/clinic1.jpeg";
+import clinic2 from "../../assets/images/clinic2.jpeg";
+import clinic3 from "../../assets/images/clinic3.jpeg";
+import clinic4 from "../../assets/images/clinic4.jpeg";
+import clinic5 from "../../assets/images/clinic5.jpeg";
+import teeth1 from "../../assets/images/teeth1.jpg";
+import ad1 from "../../assets/images/ad1.jpeg";
+import ad2 from "../../assets/images/ad2.jpeg";
+import ad3 from "../../assets/images/ad3.jpeg";
+import ad4 from "../../assets/images/ad4.jpeg";
+import ad5 from "../../assets/images/ad5.jpeg";
+import ad6 from "../../assets/images/ad6.jpeg";
+import ad7 from "../../assets/images/ad7.jpeg";
 
 const QualityService = () => {
   const settings = {

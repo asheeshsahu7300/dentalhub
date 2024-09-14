@@ -1,5 +1,5 @@
 import React from "react";
-import bgImg2 from "./../../images/bg_3.jpg";
+import bgImg2 from "./../../assets/images/bg_3.jpg";
 
 const ClinicalFacts = () => {
   return (

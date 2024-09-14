@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import eventBg from "../../images/event-bg.png";
+import eventBg from "../../assets/images/event-bg.png";
 const EventsList = () => {
   return (
     <div
