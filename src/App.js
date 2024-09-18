@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import About from "./screens/About/About";
 import Admin from "./screens/Admin/admin";
 import Appointment from "./screens/Appointment/Appointment";
@@ -25,6 +26,7 @@ function App() {
   return (
     <div>
       <Router>
+      <Analytics/>
         <AuthProvider>
           <Header />
           <Menu />
