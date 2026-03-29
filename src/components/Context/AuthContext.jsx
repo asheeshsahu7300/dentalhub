@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -10,7 +10,7 @@ export const useAuth = () => useContext(AuthContext);
 const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useHistory(); // Replacing useHistory with useNavigate for React Router v6
+  const navigate = useNavigate();
 
   // User login using email and password
   const login = async (email, password) => {
@@ -74,7 +74,7 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("token"); // Remove token from local storage
     setCurrentUser(null); // Clear user state
-    navigate.push("/"); // Redirect to login page
+    navigate("/"); // Redirect to login page
   };
 
   // Check if the user is logged in on initial load

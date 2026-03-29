@@ -1,11 +1,9 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
-    "./src/**/**/*.{js,jsx,ts,tsx}",
-    "./public/index.html",
+    "./index.html",
   ],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
       sm: "576px",
@@ -19,22 +17,42 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        Poppins: "'poppins', sans-serif",
-        Roboto: "'roboto', sans-serif",
+        inter: ["Inter", "sans-serif"],
+        outfit: ["Outfit", "sans-serif"],
+        Poppins: ["Poppins", "sans-serif"],
+        Roboto: ["Roboto", "sans-serif"],
       },
       colors: {
-        primary: "#a4161a",
-        secondary: "#3a0ca3",
-        white: "#fff",
+        primary: "#085670ff",    // retained user color
+        secondary: "#0c1ba3ff",  // retained user color
+        "primary-light": "#186ca4ff",
+        "secondary-light": "#165ed1ff",
+        "surface-glass": "rgba(255, 255, 255, 0.7)",
       },
+      boxShadow: {
+        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+        'premium': '0 20px 40px -15px rgba(0, 0, 0, 0.05)',
+      },
+      animation: {
+        'float': 'float 6s ease-in-out infinite',
+        'fade-in': 'fadeIn 0.5s ease-out',
+        'slide-up': 'slideUp 0.6s ease-out forwards',
+      },
+      keyframes: {
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        }
+      }
     },
   },
-  variants: {
-    extend: {
-      display: ["group-hover"],
-      visibility: ["group-hover"],
-    },
-  },
-
   plugins: [],
 };

@@ -1,33 +1,24 @@
 import React from "react";
-import { Redirect, Route } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 
-const PrivateRoute = ({ children, ...rest }) => {
+const PrivateRoute = ({ children }) => {
   const { currentUser, loading } = useAuth();
+  const location = useLocation();
 
   if (loading) {
-    // Optionally show a loading spinner or placeholder while checking auth status
-    return <div>Loading...</div>;
-    console.log(currentUser);
+    return (
+      <div className="flex justify-center items-center h-screen bg-gray-50">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
+      </div>
+    );
   }
 
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        currentUser ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/adminlogin",
-              state: { to: location },
-            }}
-          />
-        )
-      }
-    />
-  );
+  if (!currentUser) {
+    return <Navigate to="/adminlogin" state={{ from: location }} replace />;
+  }
+
+  return children;
 };
 
 export default PrivateRoute;

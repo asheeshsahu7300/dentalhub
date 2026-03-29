@@ -1,6 +1,8 @@
 import React from "react";
 import Breadcrumbs from "../../components/Breadcrumbs/Breadcrumbs";
 import ServicesItem from "./ServicesItem";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Services = ({ home }) => {
   const services = [
@@ -17,7 +19,7 @@ const Services = ({ home }) => {
       title: "Dental Implant",
       description:
         "Dental implant surgery is a procedure that replaces tooth roots with metal, screwlike posts and replaces damaged or missing teeth with artificial teeth that look and function much like real ones. Dental implant surgery can offer a welcome alternative to dentures or bridgework that doesn't fit well and can offer an option when a lack of natural teeth roots don't allow building denture or bridgework tooth replacements.",
-      image: "https://i.ibb.co/9vQrmFm/dental-imp.jpg",
+      image: "https://ik.imagekit.io/amddentalclinic/598468bb-e1d5-426f-9fea-895f8f0b336f-how-can-dental-implants-can-be-done-in-one-day-scaled_W7AafFFY9.webp",
     },
 
     {
@@ -26,7 +28,7 @@ const Services = ({ home }) => {
       description:
         "A dental bridge is used to bridge the gap between two healthy teeth where one or more teeth are missing.In most cases, a dental crown is placed on the healthy teeth on each side of the gap to support the bridge in between them. These teeth are known as anchor teeth or abutment teeth. The bridge essentially creates a false tooth, known as a pontic. The pontic may be constructed from various materials such as gold, alloys, porcelain or a mixture of these materials.",
       image:
-        "https://img.freepik.com/free-vector/infographic-human-dental-bridge_1308-91618.jpg?t=st=1714372824~exp=1714376424~hmac=d5bbf7d8d5db987f7d6b5dd90a54d3b9b1aceef399d15150224fbed1e473a7fc&w=996",
+        "https://img.freepik.com/free-photo/female-dentist-explaining-artificial-teeth-patient-clinic_1150-19658.jpg?t=st=1774769555~exp=1774773155~hmac=d60bf4022dc79442cb167f6a3af9f81ff134d3b9a6f1f6433a6f5faf1be46694&w=1480",
     },
     {
       id: 4,
@@ -48,8 +50,7 @@ const Services = ({ home }) => {
       title: "Full mouth reconstruction",
       description:
         "Full mouth reconstruction (FMR) is a series of dental procedures that restore the functionality of a patient's teeth and mouth. It's recommended for patients with missing teeth, unhealthy gums, or other oral complications. FMR is also a comprehensive treatment approach for patients with worn out dentition, missing or damaged teeth, and who want to improve their smile aesthetics.",
-      image:
-        "https://img.freepik.com/free-photo/dentist-showing-something-teeth-model_23-2149195934.jpg?t=st=1714371348~exp=1714374948~hmac=97d6dfacecbd25d695a1b310b393538de4183240bd73de0d7623df7f0df6d36f&w=900",
+      image: "https://img.freepik.com/free-photo/close-up-dentist-instruments_23-2151053280.jpg?t=st=1774770034~exp=1774773634~hmac=5c7befe8d4f112fbde06f0560e018938e0143594fb001ef942bebd6cfecdeaf7&w=1480"
     },
     {
       id: 7,
@@ -67,44 +68,51 @@ const Services = ({ home }) => {
       image: "https://i.ibb.co/5BfJ4FT/6.jpg",
     },
   ];
+
+  const displayedServices = home ? services.slice(0, 6) : services;
+
   return (
-    <>
+    <div className="bg-white">
       {!home && <Breadcrumbs title="Our Services" />}
 
-      <div className="bg-white">
-        <div className="container py-8 md:py-16">
-          <div className="text-center py-6 md:py-8">
-            {home ? (
-              <h1 className="text-3xl md:text-4xl font-Poppins font-semibold text-secondary">
-                Our <span className="text-primary">Services</span>
-              </h1>
-            ) : (
-              <h1 className="text-3xl md:text-4xl font-Poppins font-semibold">
-                Dental <span className="text-primary">Procedures</span>
-              </h1>
-            )}
-
-            <p className="text-sm md:text-base font-Roboto px-4 md:px-16 lg:px-64">
-              Good oral health involves more than just brushing. To keep your
-              teeth and mouth healthy for a lifetime of use, there are steps
-              that you should follow.
-            </p>
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-5xl font-outfit font-bold mb-6">
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-light">Specialized Services</span>
+              </h2>
+              <div className="w-24 h-1.5 bg-primary mx-auto mb-8 rounded-full"></div>
+              <p className="text-gray-600 font-inter text-lg md:text-xl leading-relaxed">
+                We provide comprehensive dental care utilizing modern techniques and state-of-the-art equipment to ensure your smile stays healthy and radiant.
+              </p>
+            </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {services.length > 0 && home
-              ? services
-                  .slice(0, 6)
-                  .map((service) => (
-                    <ServicesItem key={service.id} service={service} />
-                  ))
-              : services.map((service) => (
-                  <ServicesItem key={service.id} service={service} />
-                ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+            {displayedServices.map((service, index) => (
+              <ServicesItem key={service.id} service={service} index={index} />
+            ))}
           </div>
+
+          {home && (
+            <div className="text-center mt-16">
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 border-2 border-primary text-primary px-8 py-3.5 rounded-full font-bold uppercase tracking-wider text-sm hover:bg-primary hover:text-white transition-all duration-300 transform hover:-translate-y-1"
+              >
+                View All Services
+              </Link>
+            </div>
+          )}
         </div>
-      </div>
-    </>
+      </section>
+    </div>
   );
 };
 

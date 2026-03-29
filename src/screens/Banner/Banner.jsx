@@ -3,98 +3,105 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
-import banner1 from "../../assets/images/banner.png";
-import banner2 from "../../assets/images/banner2.jpg";
-import ad3 from "../../assets/images/ad3.jpeg";
-import ad4 from "../../assets/images/ad4.jpeg";
-import ad5 from "../../assets/images/ad5.jpeg";
-import ad6 from "../../assets/images/ad6.jpeg";
-import ad7 from "../../assets/images/ad7.jpeg";
+import { motion } from "framer-motion";
+import { ArrowRight, Calendar } from "lucide-react";
+
+import banner1 from "../../assets/images/banner2.jpg";
+import ad3 from "../../assets/images/bg_3.jpg";
+import ad5 from "../../assets/images/banner3.jpg";
+import banner4 from "../../assets/images/banner4.jpg"
 
 const CarouselBanner = ({ image, title, text, link }) => {
   return (
     <div
-      className="relative w-full h-64 sm:h-32 md:h-[36rem] flex items-center justify-center bg-cover bg-no-repeat bg-center overflow-hidden"
-      style={{
-        backgroundImage: `url(${image})`,
-        backgroundPosition: "center",
-        backgroundSize: "cover", // Adjust as necessary
-      }}
+      className="relative w-full h-[80vh] flex items-center bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: `url(${image})`, }}
     >
-      <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <div className="container px-4 sm:px-6 md:px-8 lg:px-16 text-center flex flex-col items-center">
-          {/* Conditionally render this div based on title */}
-          {title && text && (
-            <div className="bg-black bg-opacity-60 p-4 rounded w-full max-w-xl sm:max-w-2xl md:max-w-3xl lg:max-w-4xl xl:max-w-5xl">
-              <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl capitalize text-white font-medium mb-4">
-                {title}
-              </h1>
-              <p className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-white mb-8">
-                {text}
-              </p>
-              {link && (
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent flex items-center">
+
+        <div className="container mx-auto px-6 md:px-12 lg:px-20 relative">
+
+          {/* Glow Effect */}
+          <div className="absolute -z-10 w-72 h-72 bg-accent/20 blur-sm rounded-full top-10 left-10"></div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="bg-white/5 backdrop-blur-sm border border-white/20 shadow-premium rounded-2xl p-8 md:p-12 max-w-2xl"
+          >
+            {/* Heading */}
+            <motion.h1
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.2 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-outfit font-bold text-white mb-6 leading-tight"
+            >
+              {title}
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="text-lg md:text-xl text-white/80 mb-8 max-w-lg"
+            >
+              {text}
+            </motion.p>
+
+            {/* Button */}
+            {link && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
                 <Link
                   to={link}
-                  className="bg-primary text-white px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-secondary transition"
+                  className="group inline-flex items-center gap-2 bg-primary hover:bg-accent-light text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 >
-                  Get Appointment
+                  <Calendar size={20} />
+                  <span>Get Appointment</span>
+                  <ArrowRight
+                    size={20}
+                    className="ml-1 transition-transform group-hover:translate-x-1"
+                  />
                 </Link>
-              )}
-            </div>
-          )}
+              </motion.div>
+            )}
+          </motion.div>
         </div>
       </div>
     </div>
   );
 };
+
 const Banner = () => {
   const banners = [
     {
       image: banner1,
       title: "Eat wisely, smile nicely",
-      text: "Relax, this is going to be so easy. The smart way to find a dentist. Get matched with a great dentist today. Seriously, it’s time.",
+      text: "Relax, this is going to be so easy. The smart way to find a dentist. Get matched with a great dentist today.",
       link: "/appointment",
-    },
-    {
-      image: banner2,
-      title: "",
-      text: "",
-      link: "",
-    },
-    {
-      image: banner2,
-      title: "",
-      text: " ",
-      link: "",
     },
     {
       image: ad3,
       title: "Care That Makes You Smile",
-      text: "Your smile is your best accessory. Let us help you keep it beautiful and healthy for years to come.",
-      link: "/appointment",
-    },
-    {
-      image: ad4,
-      title: "Smile Freely",
-      text: "Your smile is your best accessory. Let us help you keep it beautiful and healthy for years to come.",
+      text: "Your smile is your best accessory. Let us help you keep it beautiful and healthy.",
       link: "/appointment",
     },
     {
       image: ad5,
       title: "Healthy Smile, Happy Life",
-      text: "Discover the joy of a healthy smile. Our team is dedicated to helping you achieve optimal oral health.",
+      text: "Discover the joy of a healthy smile with our expert dental care services.",
       link: "/appointment",
     },
     {
-      image: ad6,
-      title: "Care That Makes You Smile",
-      text: "Your smile is your best accessory. Let us help you keep it beautiful and healthy for years to come.",
-      link: "/appointment",
-    },
-    {
-      image: ad5,
-      title: "Your Smile Matters",
-      text: "Your smile is your best accessory. Let us help you keep it beautiful and healthy for years to come.",
+      image: banner4,
+      title: "Smile with Confidence",
+      text: "Experience the confidence that comes with a radiant smile. Our expert dental care services are designed to bring out your best smile.",
       link: "/appointment",
     },
   ];
@@ -102,20 +109,30 @@ const Banner = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 5000,
-    arrows: false, // Hide arrows if not needed
+    arrows: false,
+    fade: true,
+    pauseOnHover: false,
   };
 
   return (
-    <Slider {...settings} className="w-full h-full overflow-hidden">
-      {banners.map((banner, index) => (
-        <CarouselBanner key={index} {...banner} />
-      ))}
-    </Slider>
+    <div className="w-full relative">
+      <Slider
+        {...settings}
+        className="w-full h-full overflow-hidden 
+        [&_.slick-dots]:bottom-8 
+        [&_.slick-dots_li_button:before]:text-white 
+        [&_.slick-dots_li_button:before]:text-sm"
+      >
+        {banners.map((banner, index) => (
+          <CarouselBanner key={index} {...banner} />
+        ))}
+      </Slider>
+    </div>
   );
 };
 
