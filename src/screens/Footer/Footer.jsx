@@ -79,7 +79,7 @@ const Footer = () => {
             <ul className="space-y-6 font-inter text-sm">
               <li className="flex gap-4">
                 <MapPin className="text-primary-light shrink-0" size={20} />
-                <span>Visit our clinic at the heart of the city for personalized care.</span>
+                <span>Shop No 2. E2 Building. SAI SANKUL NX, next to Prabhat Kitchen, Khadakpada, Kalyan-421301</span>
               </li>
               <li className="flex gap-4 items-center">
                 <Phone className="text-primary-light shrink-0" size={20} />

@@ -83,25 +83,25 @@ const Banner = () => {
     {
       image: banner1,
       title: "Eat wisely, smile nicely",
-      text: "Relax, this is going to be so easy. The smart way to find a dentist. Get matched with a great dentist today.",
+      text: "Relax, this is going to be so easy. The smart way to find a dentist. Get matched with a great dentist today. Call us at +91 9833505077",
       link: "/appointment",
     },
     {
       image: ad3,
       title: "Care That Makes You Smile",
-      text: "Your smile is your best accessory. Let us help you keep it beautiful and healthy.",
+      text: "Your smile is your best accessory. Let us help you keep it beautiful and healthy. Call us at +91 9833505077",
       link: "/appointment",
     },
     {
       image: ad5,
       title: "Healthy Smile, Happy Life",
-      text: "Discover the joy of a healthy smile with our expert dental care services.",
+      text: "Discover the joy of a healthy smile with our expert dental care services. Call us at +91 9833505077",
       link: "/appointment",
     },
     {
       image: banner4,
       title: "Smile with Confidence",
-      text: "Experience the confidence that comes with a radiant smile. Our expert dental care services are designed to bring out your best smile.",
+      text: "Experience the confidence that comes with a radiant smile. Our expert dental care services are designed to bring out your best smile. \n Call us at +91 9833505077",
       link: "/appointment",
     },
   ];
